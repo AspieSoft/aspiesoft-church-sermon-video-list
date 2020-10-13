@@ -1,0 +1,132 @@
+.video-list-container {
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+	font-size: 1.1rem;
+	padding: 0;
+	margin: 10px auto;
+	display: inline-block;
+	/*background: radial-gradient(#303030, #242424);*/
+	background: 
+		radial-gradient(ellipse at top, #052330, transparent),
+		radial-gradient(ellipse at bottom, #4a4a4a, transparent),
+		linear-gradient(0deg, #5c5c5c, #242424);
+	color: #ffffff;
+	border-radius: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	z-index: 100;
+	animation: video-list-rotate-gradient 15s linear infinite;
+}
+
+.video-list-current-name {
+	font-weight: bold;
+	padding: 5px;
+	margin: 5px;
+	font-size: 1.15em;
+	padding: 10px 15px;
+	box-sizing: border-box;
+}
+
+.video-list-iframe {
+	max-width: 100%;
+	max-height: 100%;
+	border: none;
+	background: none;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+}
+
+.video-list-iframe-container {
+	height: auto;
+	border: none;
+	background: none;
+	margin: 0 auto;
+	padding: 0 15px;
+	box-sizing: border-box;
+	display: block;
+	position: relative;
+}
+
+.video-list-search-container {
+	width: 100%;
+	height: auto;
+	display: block;
+	padding: 10px;
+	margin: 0;
+	border-radius: 20px;
+}
+
+.video-list {
+	box-sizing: border-box;
+	width: calc(100% - 20px);
+	height: auto;
+	max-height: 400px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 0 5px;
+	margin: 5px 10px;
+	box-sizing: border-box;
+}
+
+.video-list a {
+	color: #ffffff;
+	background: linear-gradient(to right, #ffffff, #e8e8e8);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	transition: filter 0.3s;
+	filter: brightness(1);
+}
+
+.video-list a:hover {
+	filter: brightness(1.5);
+}
+
+.video-list::-webkit-scrollbar{
+	width: 0.5em;
+}
+
+.video-list::-webkit-scrollbar-thumb {
+	background: #8c8c8c;
+	border-radius: 10px;
+}
+
+.video-list-item {
+	font-size: 1.15em;
+	font-weight: bold;
+	display: block;
+	margin: 10px;
+}
+
+.video-list-item-date {
+	font-size: 0.75em;
+	display: block;
+}
+
+.video-list-item-scripture {
+	font-size: 0.85em;
+	display: inline-block;
+	margin-left: 12px;
+}
+
+.video-list-search {
+	width: calc(100% - 20px) !important;
+	margin: 5px 10px !important;
+	padding: 5px 10px !important;
+	font-size: 1.15em !important;
+	border: none !important;
+	border-radius: 10px !important;
+	box-sizing: border-box !important;
+	outline: none;
+	display: inline-block !important;
+	background: linear-gradient(to right, #ffffff, #e8e8e8);
+	color: #1c1c1c !important;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.video-list-search:focus {
+	border: none !important;
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.8) !important;
+}
