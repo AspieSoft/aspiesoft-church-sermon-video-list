@@ -1,6 +1,6 @@
 === Church Sermon Video List ===
 Contributors: AspieSoft
-Tags: church, sermon, video, list, facebook, youtube
+Tags: church, sermon, video, list, facebook, youtube, search
 Requires at least: 3.0.1
 Tested up to: 5.3
 Stable tag: 5.3
@@ -42,7 +42,6 @@ To hide a video until later: (add hide=true) (useful if the video is not availab
 [/cs-list]
 
 == Installation ==
- 
 1. Upload plugin to the /wp-content/plugins
 2. Activate the plugin through the "Plugins" menu in WordPress
 3. Go to this plugins Settings and Check "Plugin Enabled" To Enable the plugin
@@ -58,10 +57,16 @@ yes, you can directly paste the facebook embed code, or just the src url of the 
 
 == Changelog ==
 
+= 1.1 =
+Improved Search Algorithm
+
 = 1.0 =
 First Version
 
 == Upgrade Notice ==
+
+= 1.1 =
+Improved Search Algorithm
 
 = 1.0 =
 First Version

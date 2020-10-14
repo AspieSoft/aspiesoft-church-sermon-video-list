@@ -118,7 +118,7 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
         $content = '';
       }
 
-      $openTag = '<div class="video-list-container"><div class="video-list-current-name"></div><div class="video-list-iframe-container"><iframe class="video-list-iframe" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe></div><div class="video-list-search-container"><input type="text" class="video-list-search" placeholder="Search"><br><div class="video-list">';
+      $openTag = '<div class="video-list-container"><div class="video-list-current-name"></div><div class="video-list-iframe-container"><iframe class="video-list-iframe" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe></div><div class="video-list-search-container"><input type="text" class="video-list-search" placeholder="Search for any Name, Bible Verse, or Date"><br><div class="video-list">';
       $closeTag = '</div></div></div>';
 
       return $openTag.$content.$closeTag;
