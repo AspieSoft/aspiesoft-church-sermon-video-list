@@ -17,6 +17,11 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
       add_shortcode('cs-video', array($this, 'video_list'));
     }
 
+	  function enqueue(){
+      wp_enqueue_style('aspieSoftChurchSermonVideoListStyle', plugins_url('/assets/style.css', __FILE__), array(), '1.4');
+      wp_enqueue_script('aspieSoftChurchSermonVideoListScript', plugins_url('/assets/script.js', __FILE__), array('jquery'), '1.6', true);
+    }
+
     function video_list($atts = '', $content = null){
       $attr = shortcode_atts(array(
         'url' => false,
@@ -113,6 +118,7 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
       }
 
       if($content){
+      $this->enqueue();
         $content = do_shortcode(sanitize_text_field($content));
       }else{
         $content = '';

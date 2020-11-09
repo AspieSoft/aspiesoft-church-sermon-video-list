@@ -57,6 +57,10 @@ yes, you can directly paste the facebook embed code, or just the src url of the 
 
 == Changelog ==
 
+= 1.2 =
+Improved Site Performance
+ - scripts and styles now load only if the shortcode does
+
 = 1.1 =
 Improved Search Algorithm
 
@@ -64,6 +68,10 @@ Improved Search Algorithm
 First Version
 
 == Upgrade Notice ==
+
+= 1.2 =
+Improved Site Performance
+ - scripts and styles now load only if the shortcode does
 
 = 1.1 =
 Improved Search Algorithm
