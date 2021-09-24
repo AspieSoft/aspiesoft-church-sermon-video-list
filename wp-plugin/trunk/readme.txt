@@ -44,7 +44,7 @@ To hide a video until later: (add hide=true) (useful if the video is not availab
 == Installation ==
 1. Upload plugin to the /wp-content/plugins
 2. Activate the plugin through the "Plugins" menu in WordPress
-3. Go to this plugins Settings and Check "Plugin Enabled" To Enable the plugin
+3. Add the shortcode to the page
 
 == Frequently Asked Questions ==
 
