@@ -53,8 +53,14 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
         return '';
       }
 
-      if ($attr['url'] && preg_match('/[\\w_\\-.]\\/[\\w_\\-.]/', $attr['url'])) {
+      if ($attr['url'] && preg_match('/^[\\w_\\-.]+\\/[\\w_\\-]+$/', $attr['url'])) {
         $urlParts = explode('/', $attr['url']);
+        $attr['fb-profile'] = $urlParts[0];
+        $attr['fb-id'] = $urlParts[1];
+        $attr['url'] = false;
+      }else if($attr['url'] && preg_match('/^https?:\\/\\/(?:www\\.|)facebook\\.com\\/([\\w_\\-.]+)\\/videos\\/([\\w_\\-]+)\\/?$/', $attr['url'])){
+        $urlParts = preg_replace('/^https?:\\/\\/(?:www\\.|)facebook\\.com\\/([\\w_\\-.]+)\\/videos\\/([\\w_\\-]+)\\/?$/', '$1/$2', $attr['url']);
+        $urlParts = explode('/', $urlParts);
         $attr['fb-profile'] = $urlParts[0];
         $attr['fb-id'] = $urlParts[1];
         $attr['url'] = false;
@@ -126,23 +132,28 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
         return $result;
       }
 
-      if($content){
+      if ($attr['list']) {
         $this->enqueue();
-        $content = do_shortcode(sanitize_text_field($content));
-      }else if($attr['list']){
-        $this->enqueue();
+        $oldContent = $content;
         $content = '';
 
         $sermonList = sanitize_textarea_field(get_option('AspieSoftChurchSermonVideoList'));
         $sermonList = json_decode($sermonList, true);
-        foreach($sermonList as $item){
+        foreach ($sermonList as $item) {
           $content .= '[cs-video';
-          if(!$item['visible']){
+          if (!$item['visible']) {
             $content .= ' hide=true';
           }
           $content .= ' url="' . esc_attr($item['url']) . '" date="' . esc_attr($item['date']) . '" name="' . esc_attr($item['name']) . '" scripture="' . esc_attr($item['scripture']) . '"]';
         }
 
+        if($oldContent){
+          $content .= $oldContent;
+        }
+
+        $content = do_shortcode(sanitize_text_field($content));
+      }else if($content){
+        $this->enqueue();
         $content = do_shortcode(sanitize_text_field($content));
       }else{
         $content = '';
