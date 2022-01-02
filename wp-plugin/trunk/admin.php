@@ -78,10 +78,11 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
     border: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    margin: 5px;
     background: #0c77db;
     color: #ffffff;
     cursor: pointer;
+    width: 100%;
+    margin: 12px 0;
   }
 
   .sermon-list input[type="button"]:hover {
@@ -109,6 +110,7 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
     font-weight: bold;
     padding: 20px;
     cursor: pointer;
+    user-select: none;
   }
 
   .add-item:hover {
@@ -140,24 +142,58 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
     box-shadow: 0 0 8px rgba(55, 150, 228, 0.5);
   }
 
+  .item label[for="visible"] {
+    float: right;
+  }
+
   .item input[name="date"],
   .item input[name="scripture"] {
     width: 300px;
+    max-width: 100%;
   }
 
   .item input[name="name"],
   .item input[name="url"] {
     width: calc(100% - 300px - 8rem);
+    min-width: 300px;
+    max-width: 100%;
   }
 
   .item input[type="button"] {
     background: #d11313;
     color: #ffffff;
     cursor: pointer;
+    width: auto;
   }
 
   .item input[type="button"]:hover {
     background: #df2222;
+  }
+
+  @media(max-width: 1099px) {
+    .sermon-list {
+      padding: 5px;
+    }
+
+    .list {
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .item label[for="visible"] {
+      float: left;
+    }
+
+    .item input[name="name"],
+    .item input[name="url"] {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .item input[name="date"],
+    .item input[name="scripture"] {
+      width: 100%;
+    }
   }
 </style>
 
@@ -174,11 +210,14 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
 </div>
 
 <script>
-  ;function SermonDeleteItem(elm) {
+  ;
+
+  function SermonDeleteItem(elm) {
     elm.parentNode.remove();
   }
 
-  ;(function() {
+  ;
+  (function() {
     const itemList = <?php echo $sermonList; ?>;
 
     const list = document.querySelector('.sermon-list .list');
@@ -216,14 +255,14 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
       item.classList.add('item');
 
       item.innerHTML = `
-    <input type="date" name="date">
-    <input type="text" name="name" placeholder="Name">
-    <input type="checkbox" name="visible" checked><label for="visible">Show</label>
-    <br>
-    <input type="text" name="scripture" placeholder="Scripture">
-    <input type="text" name="url" placeholder="URL">
-    <input type="button" value="Delete" onclick="SermonDeleteItem(this);">
-    `;
+      <label for="visible"><input type="checkbox" name="visible" checked>Show</label>
+      <input type="date" name="date">
+      <input type="text" name="name" placeholder="Name">
+      <br>
+      <input type="text" name="scripture" placeholder="Scripture">
+      <input type="text" name="url" placeholder="URL">
+      <input type="button" value="Delete" onclick="SermonDeleteItem(this);">
+      `;
 
       list.insertBefore(item, addItem.nextElementSibling);
 
