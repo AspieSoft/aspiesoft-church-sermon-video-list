@@ -17,7 +17,7 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
       add_shortcode('cs-video', array($this, 'video_list'));
     }
 
-	  function enqueue(){
+    function enqueue(){
       wp_enqueue_style('aspieSoftChurchSermonVideoListStyle', plugins_url('/assets/style.css', __FILE__), array(), '1.4');
       wp_enqueue_script('aspieSoftChurchSermonVideoListScript', plugins_url('/assets/script.js', __FILE__), array('jquery'), '1.6', true);
     }
@@ -31,6 +31,7 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
         'fb-id' => false, 'fbid' => false,
         'fb-profile' => false, 'fbprofile' => false,
         'hide' => false, 'hidden' => false,
+        'list' => false,
       ), $atts);
 
       foreach($attr as $k => $v){
@@ -50,6 +51,13 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
 
       if($attr['hide'] || $attr['hidden']){
         return '';
+      }
+
+      if ($attr['url'] && preg_match('/[\\w_\\-.]\\/[\\w_\\-.]/', $attr['url'])) {
+        $urlParts = explode('/', $attr['url']);
+        $attr['fb-profile'] = $urlParts[0];
+        $attr['fb-id'] = $urlParts[1];
+        $attr['url'] = false;
       }
 
       if($attr['url'] || $attr['name'] || $attr['date']){
@@ -86,6 +94,7 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
         $scripture = preg_replace('/&amp;amp;/', '&amp;', $scripture);
 
         $result = '<a class="video-list-item"';
+
         if($url){
           $result .= ' href="'.esc_url($url).'"';
         }else if($fbID && $fbProfile){
@@ -118,7 +127,22 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
       }
 
       if($content){
-      $this->enqueue();
+        $this->enqueue();
+        $content = do_shortcode(sanitize_text_field($content));
+      }else if($attr['list']){
+        $this->enqueue();
+        $content = '';
+
+        $sermonList = sanitize_textarea_field(get_option('AspieSoftChurchSermonVideoList'));
+        $sermonList = json_decode($sermonList, true);
+        foreach($sermonList as $item){
+          $content .= '[cs-video';
+          if(!$item['visible']){
+            $content .= ' hide=true';
+          }
+          $content .= ' url="' . esc_attr($item['url']) . '" date="' . esc_attr($item['date']) . '" name="' . esc_attr($item['name']) . '" scripture="' . esc_attr($item['scripture']) . '"]';
+        }
+
         $content = do_shortcode(sanitize_text_field($content));
       }else{
         $content = '';

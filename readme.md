@@ -17,9 +17,21 @@ I originally made this plugin for a pastor I know, and decided to make it public
 
 ---
 
+## What's New?
+
+- Added a GUI based list editor
+
 ### How to use the wordpress shortcode
 
 ```WordPress
+For GUI Based List
+
+[cs-list list="1"]
+
+----------
+
+For Shortcode Based List
+
 [cs-list]
 
 Add new videos at the top of the list.

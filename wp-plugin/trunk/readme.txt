@@ -3,7 +3,7 @@ Contributors: AspieSoft
 Tags: church, sermon, video, list, facebook, youtube, search
 Requires at least: 3.0.1
 Tested up to: 5.8
-Stable tag: 1.2
+Stable tag: 1.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,25 +21,7 @@ I originally made this plugin for a pastor I know, and decided to make it public
 
 How To Use:
 
-[cs-list]
-
-Add new videos at the top of the list.
-The top video will automatically be selected when a user goes to the page, unless a video date is specified in the url query.
-
-[cs-video fb-id='12345' fb-profile='fb.user' date='12-28-1969' name='Faith Of A Mustard Seed' scripture='Matthew 13:31-32']
-
-[cs-video url='https://www.facebook.com/plugins.php?EmbedInfo' date='12-28-1969' name='Faith Of A Mustard Seed' scripture='Matthew 13:31-32']
-
-[cs-video url='<iframe src="https://www.facebook.com/plugins.php?EmbedInfo" OtherAttrs></iframe>' date='12-28-1969' name='Faith Of A Mustard Seed' scripture='Matthew 13:31-32']
-
-To hide a video until later: (add hide=true) (useful if the video is not available yet, and you already know the name and scripture)
-[cs-video url='N/A' hide=true name='Faith Of A Mustard Seed' scripture='Matthew 13:31-32']
-
-[cs-video ...]
-
-...
-
-[/cs-list]
+[cs-list list="1"]
 
 == Installation ==
 1. Upload plugin to the /wp-content/plugins
@@ -56,6 +38,9 @@ this should not cause the page to refresh.
 yes, you can directly paste the facebook embed code, or just the src url of the embed code.
 
 == Changelog ==
+
+= 1.3 =
+Added a GUI based list
 
 = 1.2 =
 Improved Site Performance
