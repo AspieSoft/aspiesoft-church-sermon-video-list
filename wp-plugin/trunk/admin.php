@@ -231,7 +231,7 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
         result.push({
           visible: item.querySelector('input[name="visible"]').checked,
           date: item.querySelector('input[name="date"]').value.replace(/^([0-9]+)-([0-9]+)-([0-9]+)$/, function(_, y, m, d) {
-            return `${m}-${d}-${y}`;
+            return `${Number(m)}-${Number(d)}-${Number(y)}`;
           }),
           name: item.querySelector('input[name="name"]').value,
           scripture: item.querySelector('input[name="scripture"]').value,
