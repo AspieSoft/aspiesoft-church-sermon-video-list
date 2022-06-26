@@ -160,6 +160,11 @@ SOFTWARE.
           facebook.height = facebook.width*9/16;
         }
       }
+
+      if($(this).attr('landscape')){
+        [facebook.width, facebook.height] = [facebook.height, facebook.width];
+      }
+
       iframe.attr('width', facebook.width);
       iframe.attr('height', facebook.height);
     }else{

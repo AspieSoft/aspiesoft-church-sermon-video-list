@@ -3,7 +3,7 @@ Contributors: AspieSoft
 Tags: church, sermon, video, list, facebook, youtube, search
 Requires at least: 3.0.1
 Tested up to: 5.8.2
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -39,6 +39,9 @@ yes, you can directly paste the facebook embed code, or just the src url of the 
 
 == Changelog ==
 
+= 1.4 =
+Added landscape option
+
 = 1.3 =
 Added a GUI based list
 
@@ -53,6 +56,12 @@ Improved Search Algorithm
 First Version
 
 == Upgrade Notice ==
+
+= 1.4 =
+Added landscape option
+
+= 1.3 =
+Added a GUI based list
 
 = 1.2 =
 Improved Site Performance

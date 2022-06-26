@@ -5,7 +5,7 @@
  */
 /*
 Plugin Name: AspieSoft Church Sermon Video List
-Version: 1.3.3
+Version: 1.4.0
 Description: An easy way for a church to list there sermon videos on their website.
 Author: AspieSoft
 Author URI: https://www.aspiesoft.com
@@ -88,7 +88,7 @@ if (!class_exists('AspieSoftChurchSermonVideoList')) {
 
     function enqueue() {
       wp_enqueue_style('aspieSoftChurchSermonVideoListStyle', plugins_url('/assets/style.css', __FILE__), array(), '1.4');
-      wp_enqueue_script('aspieSoftChurchSermonVideoListScript', plugins_url('/assets/script.js', __FILE__), array('jquery'), '1.6', true);
+      wp_enqueue_script('aspieSoftChurchSermonVideoListScript', plugins_url('/assets/script.js', __FILE__), array('jquery'), '1.7', true);
     }
   }
 

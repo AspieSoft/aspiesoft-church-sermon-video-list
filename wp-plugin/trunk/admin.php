@@ -142,8 +142,15 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
     box-shadow: 0 0 8px rgba(55, 150, 228, 0.5);
   }
 
-  .item label[for="visible"] {
+  .item label[for="visible"],
+  .item label[for="landscape"] {
     float: right;
+  }
+
+  .item .checkboxes {
+    float: right;
+    display: flex;
+    flex-direction: column;
   }
 
   .item input[name="date"],
@@ -180,8 +187,14 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
       border-radius: 8px;
     }
 
-    .item label[for="visible"] {
+    .item label[for="visible"],
+    .item label[for="landscape"] {
       float: left;
+    }
+
+    .item .checkboxes {
+      float: left;
+      display: contents;
     }
 
     .item input[name="name"],
@@ -230,6 +243,7 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
       list.querySelectorAll('.item').forEach(function(item) {
         result.push({
           visible: item.querySelector('input[name="visible"]').checked,
+          landscape: item.querySelector('input[name="landscape"]').checked,
           date: item.querySelector('input[name="date"]').value.replace(/^([0-9]+)-([0-9]+)-([0-9]+)$/, function(_, y, m, d) {
             return `${Number(m)}-${Number(d)}-${Number(y)}`;
           }),
@@ -255,7 +269,10 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
       item.classList.add('item');
 
       item.innerHTML = `
-      <label for="visible"><input type="checkbox" name="visible" checked>Show</label>
+      <div class="checkboxes">
+        <label for="visible"><input type="checkbox" name="visible" checked>Show</label>
+        <label for="landscape"><input type="checkbox" name="landscape">Landscape</label>
+      </div>
       <input type="date" name="date">
       <input type="text" name="name" placeholder="Name">
       <br>
@@ -274,6 +291,7 @@ update_option('AspieSoft_Settings_Token' . $computerId, wp_json_encode(array(
     for (let i = itemList.length - 1; i >= 0; i--) {
       addNewItem(function(item) {
         item.querySelector('input[name="visible"]').checked = itemList[i].visible;
+        item.querySelector('input[name="landscape"]').checked = itemList[i].landscape;
         item.querySelector('input[name="date"]').value = new Date(itemList[i].date).toISOString().substring(0, 10);
         item.querySelector('input[name="name"]').value = itemList[i].name;
         item.querySelector('input[name="scripture"]').value = itemList[i].scripture;

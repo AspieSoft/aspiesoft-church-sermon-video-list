@@ -10,7 +10,7 @@ if(!defined('ABSPATH')){
 
 if(!class_exists('AspieSoftChurchSermonVideoListMain')){
 
-  class AspieSoftChurchSermonVideoListMain{
+  class AspieSoftChurchSermonVideoListMain {
 
     function start(){
       add_shortcode('cs-list', array($this, 'video_list'));
@@ -31,6 +31,7 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
         'fb-id' => false, 'fbid' => false,
         'fb-profile' => false, 'fbprofile' => false,
         'hide' => false, 'hidden' => false,
+        'landscape' => false,
         'list' => false,
       ), $atts);
 
@@ -114,6 +115,9 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
         if($scripture){
           $result .= ' scripture="'.$scripture.'"';
         }
+        if($attr['landscape']){
+          $result .= ' landscape="true"';
+        }
 
         $result .= '>';
         if($name){
@@ -143,6 +147,9 @@ if(!class_exists('AspieSoftChurchSermonVideoListMain')){
           $content .= '[cs-video';
           if (!$item['visible']) {
             $content .= ' hide=true';
+          }
+          if ($item['landscape']) {
+            $content .= ' landscape=true';
           }
           $content .= ' url="' . esc_attr($item['url']) . '" date="' . esc_attr($item['date']) . '" name="' . esc_attr($item['name']) . '" scripture="' . esc_attr($item['scripture']) . '"]';
         }
