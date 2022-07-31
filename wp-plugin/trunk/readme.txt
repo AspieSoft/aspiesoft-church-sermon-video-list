@@ -39,6 +39,9 @@ yes, you can directly paste the facebook embed code, or just the src url of the 
 
 == Changelog ==
 
+= 1.4.1 =
+Fixed no audio on chrome with autoplay
+
 = 1.4 =
 Added landscape option
 

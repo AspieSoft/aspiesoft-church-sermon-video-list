@@ -88,6 +88,7 @@ SOFTWARE.
     }
     return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
   }
+
   function editDistance(s1, s2) {
     s1 = s1.toLowerCase();
     s2 = s2.toLowerCase();
@@ -134,6 +135,11 @@ SOFTWARE.
       url = url.replace(/<iframe .*?src=(["'])(.*?)\1.*?>.*?<\/iframe>/, '$2');
     }
 
+    let origUrl = undefined;
+    if(!url.match(/^https?:\/\/(www\.|)facebook\.com\/(plugins\/|).*$/)){
+      origUrl = url;
+    }
+
     let facebook = false;
     if(url.includes('facebook.com')){
       let query = url.substring(url.indexOf('?')+1).split('&');
@@ -147,8 +153,8 @@ SOFTWARE.
       }
     }
 
-    if(url.includes('?')){url += '&autoplay=1&mute=0';}
-    else{url += '?autoplay=1&mute=0';}
+    if(url.includes('?')){url += '&mute=0';}
+    else{url += '?mute=0';}
     iframe.attr('src', url);
 
     if(facebook){
@@ -176,6 +182,9 @@ SOFTWARE.
     }
 
     let name = $(this).html() || '';
+    if(origUrl){
+      name += `<br><a href="${origUrl.replace(/\\?([\\"])/g, '\\$1')}">Watch On Facebook</a>`;
+    }
     $('.video-list-current-name').html(''+name+'');
     let videoDate = $('.video-list-item-date', this).text();
     if(!videoDate){videoDate = $(this).text();}
