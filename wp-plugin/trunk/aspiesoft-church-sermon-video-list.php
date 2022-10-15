@@ -5,7 +5,7 @@
  */
 /*
 Plugin Name: AspieSoft Church Sermon Video List
-Version: 1.4.1
+Version: 1.4.2
 Description: An easy way for a church to list there sermon videos on their website.
 Author: AspieSoft
 Author URI: https://www.aspiesoft.com
