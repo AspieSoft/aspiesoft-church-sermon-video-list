@@ -1,12 +1,6 @@
 name: Publish To Wordpress
 
 on:
-  workflow_dispatch:
-    inputs:
-      updateDescription:
-        description: 'Update Description'
-        required: true
-        default: 'updated'
   release:
     types: [published]
 
