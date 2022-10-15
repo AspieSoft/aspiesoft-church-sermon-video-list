@@ -21,4 +21,4 @@ jobs:
           svn add --force wp-plugin/*
           svn update wp-plugin/* --accept mine-full
           svn resolve wp-plugin --accept working -R
-          svn commit wp-plugin -m "${{github.event.head_commit.message}}\n${{github.event.release.name}}\n${{github.event.release.body}}" --username=${{secrets.SVN_USER}} --password=${{secrets.SVN_PASS}}
+          svn commit wp-plugin -m "${{github.event.release.name}}: ${{github.event.release.body}}" --username=${{secrets.SVN_USER}} --password=${{secrets.SVN_PASS}}
